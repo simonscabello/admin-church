@@ -16,7 +16,7 @@ class MemberController extends Controller
      */
     public function index(): JsonResponse
     {
-        $members = Member::with('address')->get();
+        $members = Member::all();
 
         return response()->json($members);
     }
@@ -44,8 +44,6 @@ class MemberController extends Controller
     {
         $member = Member::find($id);
 
-        $member->load('address');
-
         return response()->json($member);
     }
 
@@ -54,21 +52,25 @@ class MemberController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): JsonResponse
     {
-        //
+        Member::find($id)->update($request->all());
+
+        return response()->json(['message' => 'Member updated']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        Member::find($id)->delete();
+
+        return response()->json(['message' => 'Member removed']);
     }
 }

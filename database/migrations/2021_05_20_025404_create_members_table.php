@@ -19,8 +19,14 @@ class CreateMembersTable extends Migration
             $table->string('gender');
             $table->string('cpf');
             $table->string('email')->nullable();
-            $table->dateTime('birth_date');
+            $table->date('age');
             $table->string('telephone')->nullable();
+            $table->string('state');
+            $table->string('city');
+            $table->string('neighborhood');
+            $table->string('zip_code');
+            $table->string('street');
+            $table->string('number');
             $table->timestamps();
         });
     }

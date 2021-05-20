@@ -13,10 +13,23 @@ class Member extends Model
 {
     protected $table = 'members';
 
-    protected $fillable = ['name', 'gender', 'cpf', 'email', 'birth_date', 'telephone'];
+    protected $fillable = [
+        'name',
+        'gender',
+        'cpf',
+        'email',
+        'age',
+        'telephone',
+        'state',
+        'city',
+        'neighborhood',
+        'zip_code',
+        'street',
+        'number'
+    ];
 
-    public function address(): HasOne
-    {
-        return $this->hasOne(Address::class);
-    }
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }
