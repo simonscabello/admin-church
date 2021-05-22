@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @method static create(array $all)
@@ -19,17 +19,17 @@ class Member extends Model
         'cpf',
         'email',
         'age',
-        'telephone',
-        'state',
-        'city',
-        'neighborhood',
-        'zip_code',
-        'street',
-        'number'
+        'phone',
+        'address',
     ];
 
     protected $hidden = [
         'created_at',
         'updated_at'
     ];
+
+    public function tithes(): HasMany
+    {
+        return $this->hasMany(Tithe::class);
+    }
 }

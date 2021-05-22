@@ -18,6 +18,8 @@ class MemberController extends Controller
     {
         $members = Member::all();
 
+        $members->load('tithes');
+
         return response()->json($members);
     }
 
@@ -43,6 +45,8 @@ class MemberController extends Controller
     public function show(int $id): JsonResponse
     {
         $member = Member::find($id);
+
+        $member->load('tithes');
 
         return response()->json($member);
     }
