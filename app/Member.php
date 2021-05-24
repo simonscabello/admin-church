@@ -5,6 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @method static find(int $id)
+ * @method static create(array $all)
+ */
 class Member extends Model
 {
     protected $table = 'members';

@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('members', MemberController::class);
+Route::resource('events', EventController::class);

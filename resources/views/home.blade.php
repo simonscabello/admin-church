@@ -16,9 +16,9 @@
     </nav>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="#" class="brand-link">
-            <img src="https://image.flaticon.com/icons/png/512/1515/1515220.png"  class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">Admin-Church</span>
+        <a href="#" class="brand-link" style="margin-left: 10px">
+            <i class="fas fa-place-of-worship img-circle"></i>
+            <span class="brand-text font-weight-light">Administração</span>
         </a>
 
         <div class="sidebar">
@@ -38,7 +38,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="{{route('members.index')}}" class="nav-link">
+                        <a href="{{route('members.index')}}" class="nav-link {{Route::is('members.*') ? 'active' : ''}}">
                             <i class="nav-icon fa fa-users"></i>
                             <p>
                                 Membros
@@ -46,7 +46,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('events.index')}}" class="nav-link {{Route::is('events.*') ? 'active' : ''}}">
+                            <i class="nav-icon fa fa-calendar-alt"></i>
+                            <p>
+                                Eventos
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
                             <i class="nav-icon fa fa-id-badge"></i>
                             <p>
                                 Funcionários

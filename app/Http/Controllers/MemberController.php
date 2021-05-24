@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MemberRequest;
 use App\Member;
 
+use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
@@ -18,7 +19,7 @@ class MemberController extends Controller
      */
     public function index(): View
     {
-        $members = Member::all();
+        $members = Member::all()->sortBy('name');
 
         return view('members/index', ['members' => $members]);
     }
@@ -36,22 +37,14 @@ class MemberController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param MemberRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(MemberRequest $request): RedirectResponse
     {
-        $member = new Member();
+        Member::create($request->all());
 
-        $member->name = $request->nome;
-        $member->gender = $request->sexo;
-        $member->cpf = $request->cpf;
-        $member->email = $request->email;
-        $member->age = $request->data_de_nascimento;
-        $member->phone = $request->telefone;
-        $member->address = $request->endereco;
-
-        $member->save();
+        toast('Membro cadastrado com sucesso!','success');
 
         return redirect()->route('members.index');
     }
@@ -70,34 +63,43 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Member $member
+     * @return View
      */
-    public function edit($id)
+    public function edit(Member $member): View
     {
-        //
+        return view('members/edit', ['member' => $member]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param MemberRequest $request
+     * @param Member $member
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(MemberRequest $request, Member $member): RedirectResponse
     {
-        //
+        $member->update($request->all());
+
+        toast('Membro atualizado com sucesso!','success');
+
+        return redirect()->route('members.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Member $member
+     * @return null
+     * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(Member $member)
     {
-        //
+        $member->delete();
+
+        toast('Membro removido com sucesso!','success');
+
+        return null;
     }
 }

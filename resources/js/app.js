@@ -4,6 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import swal from 'sweetalert2';
+window.Swal = swal;
+
 require('./bootstrap');
 
 window.Vue = require('vue');

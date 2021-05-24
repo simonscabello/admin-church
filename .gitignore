@@ -4,6 +4,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/public/css/app.css
+/public/js/app.js
+/public/fonts/vendor/@fortawesome/fontawesome-free
 .env
 .env.backup
 .phpunit.result.cache

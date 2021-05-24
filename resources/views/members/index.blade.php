@@ -1,6 +1,7 @@
 @extends('home')
 
 @section('content-body')
+<!--suppress JSCheckFunctionSignatures -->
 <div class="col-12">
     <div class="card">
         <div class="card-header">
@@ -10,7 +11,6 @@
                 <a href="{{route('members.create')}}" class="btn btn-primary">Novo membro</a>
             </div>
         </div>
-        <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
             <table class="table table-hover text-nowrap">
                 <thead>
@@ -37,14 +37,51 @@
                     <td>{{$member->age}}</td>
                     <td>{{$member->phone}}</td>
                     <td>{{$member->address}}</td>
-                    <td>Ações</td>
+                    <td>
+                        <a href="{{route('members.show', $member->id)}}" class="btn btn-primary"><i class="nav-icon fa fa-eye"></i></a>
+                        <a href="{{route('members.edit', $member->id)}}" class="btn btn-warning"><i class="nav-icon fa fa-pencil-alt"></i></a>
+                        <form id="delete-form{{$member->id}}" action="{{route('members.destroy', $member->id)}}" method="POST" class="d-none">
+                            @csrf
+                            @method('delete')
+                        </form>
+                        <button form="delete-form{{$member->id}}" type="submit" onclick="deletemember({{$member->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
+                    </td>
                 </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
     </div>
-    <!-- /.card -->
 </div>
+
+<script>
+    function deletemember(id) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Você tem certeza?',
+            text: "Você nao poderá desfazer essa ação!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, deletar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: 'members/' + id,
+                    type: "DELETE",
+                    success: function() {
+                        window.location.reload();
+                    },
+                    error: function(e) {
+                    }
+                })
+            }
+        })
+    }
+</script>
 @endsection
