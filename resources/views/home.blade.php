@@ -1,23 +1,89 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+        </ul>
+    </nav>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="#" class="brand-link">
+            <img src="https://image.flaticon.com/icons/png/512/1515/1515220.png"  class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Admin-Church</span>
+        </a>
 
-                    {{ __('You are logged in!') }}
+        <div class="sidebar">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="https://scontent.fvix3-1.fna.fbcdn.net/v/t1.6435-1/cp0/p40x40/120948122_3434979316578462_5650602700484922946_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=dbb9e7&_nc_eui2=AeGTANYyIumOzl61Dg9BpmerFloUmrdJLycWWhSat0kvJ0xMqXYFldbm1NfexTKEXbQQKpLfKMGBUtgHCyNB0QK2&_nc_ohc=rcvrpCyD6VsAX94a0om&_nc_ht=scontent.fvix3-1.fna&tp=27&oh=31acd5dbe76daaca522f8f6cc4e0efac&oe=60D1BFAB" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="d-block">{{auth()->user()->name ?? '-'}}</a>
                 </div>
             </div>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                        <a href="{{route('members.index')}}" class="nav-link">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                Membros
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-id-badge"></i>
+                            <p>
+                                Funcionários
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-building"></i>
+                            <p>
+                                Patrimônio
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-clipboard"></i>
+                            <p>
+                                Cargos
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
+    </aside>
+
+    <div class="content-wrapper">
+        @yield('content-body')
     </div>
+
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
 </div>
+</body>
 @endsection

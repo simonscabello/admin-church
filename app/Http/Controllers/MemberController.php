@@ -1,54 +1,81 @@
-<?php
+<?php /** @noinspection PhpUndefinedFieldInspection */
 
 namespace App\Http\Controllers;
 
 use App\Member;
-use Illuminate\Http\JsonResponse;
+
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+     * @return View
      */
-    public function index(): JsonResponse
+    public function index(): View
     {
         $members = Member::all();
 
-        $members->load('tithes');
+        return view('members/index', ['members' => $members]);
+    }
 
-        return response()->json($members);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return View
+     */
+    public function create(): View
+    {
+        return view('members/create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return JsonResponse
+     * @return RedirectResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): RedirectResponse
     {
-        $member = Member::create($request->all());
+        $member = new Member();
 
-        return response()->json($member);
+        $member->name = $request->nome;
+        $member->gender = $request->sexo;
+        $member->cpf = $request->cpf;
+        $member->email = $request->email;
+        $member->age = $request->data_de_nascimento;
+        $member->phone = $request->telefone;
+        $member->address = $request->endereco;
+
+        $member->save();
+
+        return redirect()->route('members.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return JsonResponse
+     * @param  int  $id
+     * @return Response
      */
-    public function show(int $id): JsonResponse
+    public function show($id)
     {
-        $member = Member::find($id);
+        //
+    }
 
-        $member->load('tithes');
-
-        return response()->json($member);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -56,25 +83,21 @@ class MemberController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return JsonResponse
+     * @return Response
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, $id)
     {
-        Member::find($id)->update($request->all());
-
-        return response()->json(['message' => 'Member updated']);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return JsonResponse
+     * @return Response
      */
-    public function destroy(int $id): JsonResponse
+    public function destroy($id)
     {
-        Member::find($id)->delete();
-
-        return response()->json(['message' => 'Member removed']);
+        //
     }
 }
