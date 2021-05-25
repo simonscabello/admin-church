@@ -100,6 +100,6 @@ class MemberController extends Controller
 
         toast('Membro removido com sucesso!','success');
 
-        return null;
+        return redirect()->route('members.index');
     }
 }

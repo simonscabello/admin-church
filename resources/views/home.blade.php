@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{route('employees.index')}}" class="nav-link {{Route::is('employees.*') ? 'active' : ''}}">
                             <i class="nav-icon fa fa-id-badge"></i>
                             <p>
                                 Funcionários
@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('properties.index')}}" class="nav-link {{Route::is('properties.*') ? 'active' : ''}}">
                             <i class="nav-icon fa fa-building"></i>
                             <p>
                                 Patrimônio
@@ -70,10 +70,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-clipboard"></i>
+                        <a href="{{route('tithes.index')}}" class="nav-link {{Route::is('tithes.*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-money-check-alt"></i>
                             <p>
-                                Cargos
+                                Dízimos
                             </p>
                         </a>
                     </li>

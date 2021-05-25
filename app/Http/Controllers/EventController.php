@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Http\Requests\EventRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class EventController extends Controller
@@ -34,10 +34,10 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param EventRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(EventRequest $request): RedirectResponse
     {
         Event::create($request->all());
 
@@ -71,11 +71,11 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  Event  $event
+     * @param EventRequest $request
+     * @param Event $event
      * @return RedirectResponse
      */
-    public function update(Request $request, Event $event): RedirectResponse
+    public function update(EventRequest $request, Event $event): RedirectResponse
     {
         $event->update($request->all());
 
@@ -87,15 +87,16 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Event $event
+     * @return RedirectResponse
+     * @throws \Exception
      */
-    public function destroy(Event $event)
+    public function destroy(Event $event): RedirectResponse
     {
         $event->delete();
 
         toast('Evento removido com sucesso!','success');
 
-        return null;
+        return redirect()->route('events.index');
     }
 }

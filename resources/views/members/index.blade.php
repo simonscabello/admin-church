@@ -44,7 +44,7 @@
                             @csrf
                             @method('delete')
                         </form>
-                        <button form="delete-form{{$member->id}}" type="submit" onclick="deletemember({{$member->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
+                        <button onclick="deletemember({{$member->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
@@ -60,28 +60,18 @@
 
         Swal.fire({
             title: 'Você tem certeza?',
-            text: "Você nao poderá desfazer essa ação!",
+            text: "Você não poderá desfazer essa ação!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#0d82ee',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Sim, deletar!'
         }).then((result) => {
             if (result.isConfirmed) {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: 'members/' + id,
-                    type: "DELETE",
-                    success: function() {
-                        window.location.reload();
-                    },
-                    error: function(e) {
-                    }
-                })
+                $('#delete-form' + id).submit()
             }
         })
     }
+
 </script>
 @endsection

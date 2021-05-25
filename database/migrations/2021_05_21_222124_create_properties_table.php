@@ -20,7 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('amount');
             $table->float('value')->nullable();
             $table->date('buy_date')->nullable();
-            $table->boolean('donated')->default(false);
+            $table->text('donated');
             $table->timestamps();
         });
     }

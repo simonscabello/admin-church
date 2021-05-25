@@ -39,7 +39,7 @@
                                     @csrf
                                     @method('delete')
                                 </form>
-                                <button form="delete-form{{$event->id}}" type="submit" onclick="deleteevent({{$event->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
+                                <button onclick="deleteevent({{$event->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -63,18 +63,7 @@
                 confirmButtonText: 'Sim, deletar!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: 'events/' + id,
-                        type: "DELETE",
-                        success: function() {
-                            window.location.reload();
-                        },
-                        error: function(e) {
-                        }
-                    })
+                    $('#delete-form' + id).submit()
                 }
             })
         }
