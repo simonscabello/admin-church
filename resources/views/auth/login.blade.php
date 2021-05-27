@@ -10,7 +10,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        Igreja Universal Do Reino Do Bolsonaro
+        <i class="fas fa-place-of-worship img-circle"></i>
     </div>
     <div class="card">
         <div class="card-body login-card-body">

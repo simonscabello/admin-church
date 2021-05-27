@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @method static find(int $id)
  * @method static create(array $all)
+ * @method static whereHas(string $string, \Closure $param)
  */
 class Member extends Model
 {
@@ -31,5 +32,10 @@ class Member extends Model
     public function tithes(): HasMany
     {
         return $this->hasMany(Tithe::class);
+    }
+
+    public function departaments(): HasMany
+    {
+        return $this->hasMany(Department::class);
     }
 }

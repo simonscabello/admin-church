@@ -25,3 +25,4 @@ Route::resource('events', EventController::class)->middleware('auth');
 Route::resource('employees', EmployeeController::class)->middleware('auth');
 Route::resource('properties', PropertieController::class)->middleware('auth');
 Route::resource('tithes', TitheController::class)->middleware('auth');
+Route::resource('departments', DepartmentController::class)->middleware('auth');

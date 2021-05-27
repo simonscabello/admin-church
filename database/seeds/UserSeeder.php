@@ -15,8 +15,8 @@ use Illuminate\Database\Seeder;
         DB::table('users')->insert([
             'id' => '1',
             'name' => 'Simon Scabello',
-            'email' => 'simon@primelan.com.br',
-            'password' => Hash::make('simon93093414')
+            'email' => 'simon@gmail.com',
+            'password' => Hash::make('123456789')
         ]);
     }
 }

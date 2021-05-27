@@ -18,7 +18,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="#" class="brand-link" style="margin-left: 10px">
             <i class="fas fa-place-of-worship img-circle"></i>
-            <span class="brand-text font-weight-light">Administração</span>
+            <span class="brand-text font-weight-light">Sua igreja aqui</span>
         </a>
 
         <div class="sidebar">
@@ -77,12 +77,20 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('departments.index')}}" class="nav-link {{Route::is('departments.*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                            <p>
+                                Cargos e Departamentos
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </aside>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="margin-top: 15px;">
         @yield('content-body')
     </div>
 

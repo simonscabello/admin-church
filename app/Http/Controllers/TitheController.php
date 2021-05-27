@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Member;
+use App\Tithe;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class TitheController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $tithes = Tithe::with('member')->get();
+
+        return view('tithes.index', ['tithes' => $tithes]);
     }
 
     /**
@@ -23,18 +29,24 @@ class TitheController extends Controller
      */
     public function create()
     {
-        //
+        $members = Member::all();
+
+        return view('tithes.create', ['members' => $members]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        Tithe::create($request->all());
+
+        toast('Contribuição cadastrada com sucesso!','success');
+
+        return redirect()->route('tithes.index');
     }
 
     /**
@@ -56,7 +68,12 @@ class TitheController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tithe = Tithe::find($id);
+        $members = Member::all();
+
+        $tithe->load('member');
+
+        return view('tithes.edit', ['tithe' => $tithe, 'members' => $members]);
     }
 
     /**
@@ -66,19 +83,29 @@ class TitheController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tithe $tithe)
     {
-        //
+        $tithe->update($request->all());
+
+        toast('Dízimo atualizado com sucesso!','success');
+
+        return redirect()->route('tithes.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  $id
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
-        //
+        $tithe = Tithe::find($id);
+
+        $tithe->delete();
+
+        toast('Contribuição removida com sucesso!', 'success');
+
+        return redirect()->route('tithes.index');
     }
 }

@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static create(array $all)
+ * @method static find(int $id)
  */
 class Tithe extends Model
 {
@@ -23,4 +24,9 @@ class Tithe extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'member_id', 'id');
+    }
 }

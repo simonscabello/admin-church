@@ -23,7 +23,7 @@ class CreateTithesTable extends Migration
                 ->onDelete('cascade');
 
             $table->date('date');
-            $table->integer('type');
+            $table->string('type');
             $table->float('value');
             $table->timestamps();
         });
