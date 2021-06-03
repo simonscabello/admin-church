@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static create(array $all)
@@ -11,6 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Tithe extends Model
 {
+    Use SoftDeletes;
+
     protected $table = 'tithes';
 
     protected $fillable = [
@@ -25,7 +28,11 @@ class Tithe extends Model
         'updated_at'
     ];
 
-    public function member()
+    protected $dates = [
+        'deleted_at'
+    ];
+
+    public function member(): BelongsTo
     {
         return $this->belongsTo(Member::class, 'member_id', 'id');
     }

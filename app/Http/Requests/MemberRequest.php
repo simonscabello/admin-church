@@ -29,7 +29,7 @@ class MemberRequest extends FormRequest
             'cpf' => ['required'],
             'email' => ['email'],
             'age' => ['required'],
-            'address' => ['required', 'min:3']
+            'address' => ['required', 'min:3'],
         ];
     }
 
@@ -44,7 +44,7 @@ class MemberRequest extends FormRequest
             'email.email' => 'Por favor, insira um e-mail válido',
             'age.required' => 'Por favor, insira a data de nascimento',
             'address.required' => 'Por favor, insira o endereço',
-            'address.min' => 'Por favor, insira o endereço completo'
+            'address.min' => 'Por favor, insira o endereço completo',
         ];
     }
 }

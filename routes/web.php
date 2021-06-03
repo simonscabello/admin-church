@@ -19,10 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::resource('members', MemberController::class)->middleware('auth');
-Route::resource('events', EventController::class)->middleware('auth');
-Route::resource('employees', EmployeeController::class)->middleware('auth');
-Route::resource('properties', PropertieController::class)->middleware('auth');
-Route::resource('tithes', TitheController::class)->middleware('auth');
-Route::resource('departments', DepartmentController::class)->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('members', MemberController::class);
+    Route::resource('events', EventController::class);
+    Route::resource('employees', EmployeeController::class);
+    Route::resource('properties', PropertieController::class);
+    Route::resource('tithes', TitheController::class);
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('churches', ChurchController::class);
+});

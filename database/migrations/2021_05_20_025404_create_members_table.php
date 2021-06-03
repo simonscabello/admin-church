@@ -22,6 +22,7 @@ class CreateMembersTable extends Migration
             $table->date('age');
             $table->string('phone')->nullable();
             $table->text('address');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

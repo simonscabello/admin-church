@@ -4,9 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method static create(array $all)
+ * @method static find(int $id)
+ */
 class Department extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'departments';
 
     protected $fillable = [
@@ -14,6 +21,8 @@ class Department extends Model
         'name',
         'description'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function member(): BelongsTo
     {

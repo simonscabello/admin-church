@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static find(int $id)
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Member extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'members';
 
     protected $fillable = [
@@ -29,6 +32,8 @@ class Member extends Model
         'updated_at'
     ];
 
+    protected $dates = ['deleted_at'];
+
     public function tithes(): HasMany
     {
         return $this->hasMany(Tithe::class);
@@ -37,5 +42,10 @@ class Member extends Model
     public function departaments(): HasMany
     {
         return $this->hasMany(Department::class);
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
     }
 }

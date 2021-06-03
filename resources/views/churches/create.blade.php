@@ -3,9 +3,9 @@
 @section('content-body')
     <div class="card card-primary">
         <div class="card-header">
-            <h2 class="card-title">Novo membro</h2>
+            <h2 class="card-title">Nova igreja</h2>
         </div>
-        <form method="POST" action="{{route('events.store')}}">
+        <form method="POST" action="{{route('churches.store')}}">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -18,7 +18,6 @@
                     @enderror
                 </div>
 
-
                 <div class="form-group">
                     <label for="description">Descrição</label>
                     <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" required value="{{old('description')}}">
@@ -30,9 +29,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="start_date">Começa em</label>
-                    <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{old('start_date')}}">
-                    @error('start_date')
+                    <label for="address">Endereço</label>
+                    <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" required value="{{old('address')}}">
+                    @error('address')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
@@ -40,9 +39,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="end_date">Termina em</label>
-                    <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{old('end_date')}}">
-                    @error('end_date')
+                    <label for="type">Tipo</label>
+                    <select name="type" class="form-control" required>
+                        <option disabled selected value> -- Selecione o tipo -- </option>
+                        <option value="igreja">Igreja</option>
+                        <option value="congregacao">Congregação</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="leader">Líder</label>
+                    <input type="text" name="leader" class="form-control @error('leader') is-invalid @enderror" required value="{{old('leader')}}">
+                    @error('leader')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
@@ -50,9 +58,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="max_participants">Vagas</label>
-                    <input type="number" name="max_participants" class="form-control @error('max_participants') is-invalid @enderror" value="{{old('max_participants')}}">
-                    @error('max_participants')
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" name="cnpj" class="form-control @error('cnpj') is-invalid @enderror" value="{{old('cnpj')}}">
+                    @error('cnpj')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{old('phone')}}">
+                    @error('phone')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>

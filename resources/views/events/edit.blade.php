@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="max_participants">Máximo de participantes</label>
+                    <label for="max_participants">Vagas</label>
                     <input type="number" name="max_participants" class="form-control @error('max_participants') is-invalid @enderror" value="{{$event->max_participants}}">
                     @error('max_participants')
                     <div class="invalid-feedback">

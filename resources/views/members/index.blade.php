@@ -34,7 +34,7 @@
                     <td>{{$member->gender}}</td>
                     <td>{{$member->cpf}}</td>
                     <td>{{$member->email}}</td>
-                    <td>{{$member->age}}</td>
+                    <td>{{date('d/m/Y', strtotime($member->age))}}</td>
                     <td>{{$member->phone}}</td>
                     <td>{{$member->address}}</td>
                     <td>

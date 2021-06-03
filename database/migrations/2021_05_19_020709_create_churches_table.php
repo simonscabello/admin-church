@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertiesTable extends Migration
+class CreateChurchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreatePropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('churches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->integer('amount');
-            $table->float('value')->nullable();
-            $table->date('buy_date')->nullable();
-            $table->text('donated');
+            $table->text('address');
+            $table->string('cnpj');
+            $table->string('phone');
+            $table->string('type');
+            $table->string('leader');
+            $table->integer('members')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +35,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties');
+        Schema::dropIfExists('churches');
     }
 }

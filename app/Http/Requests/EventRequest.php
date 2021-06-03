@@ -26,8 +26,8 @@ class EventRequest extends FormRequest
         return [
             'name'  => ['required', 'min:3'],
             'description' => ['required', 'min:3'],
-            'start_date' => ['date', 'required'],
-            'end_date' => ['required', 'date'],
+            'start_date' => ['date', 'required', 'after:today'],
+            'end_date' => ['required', 'date', 'after:start_date'],
             'max_participants' => ['required', 'integer']
         ];
     }
@@ -41,8 +41,10 @@ class EventRequest extends FormRequest
             'description.min' => 'Por favor, descrição muito pequena',
             'start_date.date' => 'Por favor, insira uma data válida',
             'start_date.required' => 'Por favor, insira a data',
+            'start_date.after' => 'Por favor, o evento deve acontecer no futuro',
             'end_date.required' => 'Por favor, insira a data de término',
             'end_date.date' => 'Por favor, insira uma data válida',
+            'end_date.after' => 'Por favor, a data inserida deve ser após o começo do evento',
             'max_participants.required' => 'Por favor, insira o numero máximo de participantes',
             'max_participants.integer' => 'Por favor, insira um valor válido'
         ];

@@ -18,7 +18,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="#" class="brand-link" style="margin-left: 10px">
             <i class="fas fa-place-of-worship img-circle"></i>
-            <span class="brand-text font-weight-light">Sua igreja aqui</span>
+            <span class="brand-text font-weight-light">SIB Barcelona</span>
         </a>
 
         <div class="sidebar">
@@ -37,6 +37,14 @@
 
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                        <a href="{{route('churches.index')}}" class="nav-link {{Route::is('churches.*') ? 'active' : ''}}">
+                            <i class="nav-icon fa fa-cross"></i>
+                            <p>
+                                Igreja e congregações
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{route('members.index')}}" class="nav-link {{Route::is('members.*') ? 'active' : ''}}">
                             <i class="nav-icon fa fa-users"></i>
@@ -98,7 +106,7 @@
         <div class="float-right d-none d-sm-inline">
             Anything you want
         </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; {{date('Y')}} <a href="https://github.com/simonscabello">Simon Scabello</a>.</strong> All rights reserved.
     </footer>
 </div>
 </body>

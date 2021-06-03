@@ -32,7 +32,7 @@
                     <td>{{$propertie->description}}</td>
                     <td>{{$propertie->amount}}</td>
                     <td>{{$propertie->value}}</td>
-                    <td>{{$propertie->buy_date}}</td>
+                    <td>{{date('d/m/Y', strtotime($propertie->buy_date))}}</td>
                     <td>{{$propertie->donated}}</td>
                     <td>
                         <a href="{{route('properties.show', $propertie->id)}}" class="btn btn-primary"><i class="nav-icon fa fa-eye"></i></a>

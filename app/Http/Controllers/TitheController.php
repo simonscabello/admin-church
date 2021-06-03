@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TitheRequest;
 use App\Member;
 use App\Tithe;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class TitheController extends Controller
@@ -25,9 +25,9 @@ class TitheController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         $members = Member::all();
 
@@ -37,10 +37,10 @@ class TitheController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param TitheRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(TitheRequest $request): RedirectResponse
     {
         Tithe::create($request->all());
 
@@ -64,9 +64,9 @@ class TitheController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         $tithe = Tithe::find($id);
         $members = Member::all();
@@ -79,11 +79,11 @@ class TitheController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param TitheRequest $request
+     * @param Tithe $tithe
+     * @return RedirectResponse
      */
-    public function update(Request $request, Tithe $tithe)
+    public function update(TitheRequest $request, Tithe $tithe): RedirectResponse
     {
         $tithe->update($request->all());
 

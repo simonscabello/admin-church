@@ -24,6 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->string('email')->nullable();
             $table->date('started_in');
             $table->float('salary');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

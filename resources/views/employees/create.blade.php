@@ -90,7 +90,7 @@
 
                 <div class="form-group">
                     <label for="salary">Salário</label>
-                    <input type="number" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{old('salary')}}">
+                    <input type="number" step="0.01" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{old('salary')}}">
                     @error('salary')
                     <div class="invalid-feedback">
                         {{$message}}

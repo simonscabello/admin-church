@@ -4,10 +4,10 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Dízimos</h3>
+            <h3 class="card-title">Igrejas</h3>
 
             <div class="card-tools">
-                <a href="{{route('tithes.create')}}" class="btn btn-primary">Novo registro</a>
+                <a href="{{route('churches.create')}}" class="btn btn-primary">Nova igreja</a>
             </div>
         </div>
         <div class="card-body table-responsive p-0">
@@ -15,28 +15,28 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Membro</th>
-                    <th>Data</th>
-                    <th>Tipo</th>
-                    <th>Valor</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Endereço</th>
+                    <th>Líder</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($tithes as $tithe)
+                @foreach($churches as $church)
                 <tr>
-                    <td>{{$tithe->id}}</td>
-                    <td>{{$tithe->member->name ?? 'Membro excluido'}}</td>
-                    <td>{{date('d/m/Y', strtotime($tithe->date))}}</td>
-                    <td>{{$tithe->type}}</td>
-                    <td>R$ {{$tithe->value}}</td>
+                    <td>{{$church->id}}</td>
+                    <td>{{$church->name}}</td>
+                    <td>{{$church->description}}</td>
+                    <td>{{$church->address}}</td>
+                    <td>{{$church->leader}}</td>
                     <td>
-                        <a href="{{route('tithes.edit', $tithe->id)}}" class="btn btn-warning"><i class="nav-icon fa fa-pencil-alt"></i></a>
-                        <form id="delete-form{{$tithe->id}}" action="{{route('tithes.destroy', $tithe->id)}}" method="POST" class="d-none">
+                        <a href="{{route('churches.edit', $church->id)}}" class="btn btn-warning"><i class="nav-icon fa fa-pencil-alt"></i></a>
+                        <form id="delete-form{{$church->id}}" action="{{route('churches.destroy', $church->id)}}" method="POST" class="d-none">
                             @csrf
                             @method('delete')
                         </form>
-                        <button onclick="deletemember({{$tithe->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
+                        <button onclick="deletechurch({{$church->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
@@ -47,7 +47,7 @@
 </div>
 
 <script>
-    function deletemember(id) {
+    function deletechurch(id) {
         event.preventDefault();
 
         Swal.fire({

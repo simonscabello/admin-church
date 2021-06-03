@@ -19,7 +19,8 @@
                         <th>Descrição</th>
                         <th>Começa em</th>
                         <th>Termina em</th>
-                        <th>Máximo de participantes</th>
+                        <th>Vagas</th>
+                        <th>Participantes</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
@@ -32,6 +33,7 @@
                             <td>{{$event->start_date}}</td>
                             <td>{{$event->end_date}}</td>
                             <td>{{$event->max_participants}}</td>
+                            <td>{{$event->registered_participants ?? '0'}}</td>
                             <td>
                                 <a href="{{route('events.show', $event->id)}}" class="btn btn-primary"><i class="nav-icon fa fa-eye"></i></a>
                                 <a href="{{route('events.edit', $event->id)}}" class="btn btn-warning"><i class="nav-icon fa fa-pencil-alt"></i></a>

@@ -38,7 +38,7 @@
                             <td>{{$employee->description}}</td>
                             <td>{{$employee->phone}}</td>
                             <td>{{$employee->email}}</td>
-                            <td>{{$employee->started_in}}</td>
+                            <td>{{date('d/m/Y', strtotime($employee->started_in))}}</td>
                             <td>R$ {{$employee->salary}}</td>
 
                             <td>

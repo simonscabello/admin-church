@@ -20,6 +20,8 @@ class CreateEventsTable extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->integer('max_participants');
+            $table->integer('registered_participants')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
