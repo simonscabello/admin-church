@@ -54,6 +54,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{route('visitors.index')}}" class="nav-link {{Route::is('visitors.*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-user-friends"></i>
+                            <p>
+                                Visitantes
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('events.index')}}" class="nav-link {{Route::is('events.*') ? 'active' : ''}}">
                             <i class="nav-icon fa fa-calendar-alt"></i>
                             <p>

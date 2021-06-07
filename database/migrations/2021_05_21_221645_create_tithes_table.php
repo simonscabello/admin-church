@@ -16,7 +16,7 @@ class CreateTithesTable extends Migration
         Schema::create('tithes', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('member_id')->nullable();
             $table->foreign('member_id')->references('id')->on('members');
 
             $table->date('date');

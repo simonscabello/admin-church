@@ -28,4 +28,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('tithes', TitheController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('churches', ChurchController::class);
+    Route::resource('visitors', VisitorController::class);
 });
