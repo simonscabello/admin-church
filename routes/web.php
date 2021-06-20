@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('members', MemberController::class);
     Route::resource('events', EventController::class);
     Route::resource('employees', EmployeeController::class);
@@ -29,4 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('departments', DepartmentController::class);
     Route::resource('churches', ChurchController::class);
     Route::resource('visitors', VisitorController::class);
+    Route::resource('records', RecordController::class)->except(['edit', 'update']);
+    Route::resource('reports', ReportController::class);
 });

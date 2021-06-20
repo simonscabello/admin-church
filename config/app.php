@@ -53,6 +53,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'bibleapi_token' => env('BIBLEAPI_TOKEN', null),
+    'bibleapi_url' => env('BIBLEAPI_URL', null),
 
     'asset_url' => env('ASSET_URL', null),
 

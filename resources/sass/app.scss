@@ -19,3 +19,22 @@ $fa-font-path:"../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";
 
 
+.card {
+    padding-bottom: 0.5rem
+}
+
+.card-header {
+    margin-bottom: 0.5rem;
+}
+
+label {
+    margin-right: 0.5rem;
+}
+
+.dataTables_info {
+    margin-left: 0.5rem;
+}
+
+.dataTables_length {
+    margin-left: 0.5rem;
+}

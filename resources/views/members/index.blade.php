@@ -1,7 +1,6 @@
 @extends('home')
 
 @section('content-body')
-<!--suppress JSCheckFunctionSignatures -->
 <div class="col-12">
     <div class="card">
         <div class="card-header">
@@ -12,7 +11,7 @@
             </div>
         </div>
         <div class="card-body table-responsive p-0">
-            <table class="table table-hover text-nowrap">
+            <table id="data-table" class="table table-hover text-nowrap">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -55,6 +54,21 @@
 </div>
 
 <script>
+    $(document).ready(function(){
+        $("#data-table").DataTable({
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
+            "order": [[ 1, "asc" ]],
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "Nenhum registro encontrado",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "No records available",
+            }
+        })
+    });
+
     function deletemember(id) {
         event.preventDefault();
 
@@ -65,6 +79,7 @@
             showCancelButton: true,
             confirmButtonColor: '#0d82ee',
             cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
             confirmButtonText: 'Sim, deletar!'
         }).then((result) => {
             if (result.isConfirmed) {

@@ -64,11 +64,6 @@ class EventController extends Controller
 
         $event->members()->attach($request->member_id);
 
-//        $event_member = new EventMember();
-//        $event_member->member_id = $request->member_id;
-//        $event_member->event_id = $id;
-//        $event_member->save();
-
         return response()->json(['message' => 'Membro cadastrado no evento com sucesso!']);
     }
 

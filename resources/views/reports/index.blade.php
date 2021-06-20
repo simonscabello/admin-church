@@ -4,10 +4,10 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Visitantes</h3>
+                <h3 class="card-title">Relatórios financeiros</h3>
 
                 <div class="card-tools">
-                    <a href="{{route('visitors.create')}}" class="btn btn-primary">Novo visitante</a>
+                    <a href="{{route('reports.create')}}" class="btn btn-primary">Novo relatório</a>
                 </div>
             </div>
             <div class="card-body table-responsive p-0">
@@ -16,28 +16,32 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>Dia da visita</th>
+                        <th>Mês</th>
+                        <th>Entradas</th>
+                        <th>Saídas</th>
+                        <th>Balanço</th>
+                        <th>Arquivo</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($visitors as $visitor)
+                    @foreach($reports as $report)
                         <tr>
-                            <td>{{$visitor->id}}</td>
-                            <td>{{$visitor->name}}</td>
-                            <td>{{$visitor->address}}</td>
-                            <td>{{$visitor->phone}}</td>
-                            <td>{{date('d/m/Y', strtotime($visitor->visit_day))}}</td>
+                            <td>{{$report->id}}</td>
+                            <td>{{$report->name}}</td>
+                            <td>{{date('m/Y', strtotime($report->month))}}</td>
+                            <td>R$ {{$report->entries}}</td>
+                            <td>R$ {{$report->exits}}</td>
+                            <td>R$ {{$report->balance}}</td>
+                            <td><a target="_blank" href="{{$report->file->url}}"><i class="fas fa-file-pdf"></i> {{$report->file->original_name}}</a></td>
+
                             <td>
-                                <a href="{{route('visitors.show', $visitor->id)}}" class="btn btn-primary"><i class="nav-icon fa fa-eye"></i></a>
-                                <a href="{{route('visitors.edit', $visitor->id)}}" class="btn btn-warning"><i class="nav-icon fa fa-pencil-alt"></i></a>
-                                <form id="delete-form{{$visitor->id}}" action="{{route('visitors.destroy', $visitor->id)}}" method="POST" class="d-none">
+                                <a href="{{route('employees.show', $report->id)}}" class="btn btn-primary"><i class="nav-icon fa fa-eye"></i></a>
+                                <form id="delete-form{{$report->id}}" action="{{route('reports.destroy', $report->id)}}" method="POST" class="d-none">
                                     @csrf
                                     @method('delete')
                                 </form>
-                                <button onclick="deleteevent({{$visitor->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
+                                <button onclick="deleteemployee({{$report->id}});" class="btn btn-danger"><i class="nav-icon fa fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -53,7 +57,7 @@
                 "responsive": true,
                 "lengthChange": true,
                 "autoWidth": false,
-                "order": [[ 4, "asc" ]],
+                "order": [[ 1, "asc" ]],
                 "language": {
                     "lengthMenu": "Mostrando _MENU_ registros por página",
                     "zeroRecords": "Nenhum registro encontrado",
@@ -63,7 +67,7 @@
             })
         });
 
-        function deleteevent(id) {
+        function deleteemployee(id) {
             event.preventDefault();
 
             Swal.fire({
@@ -82,4 +86,3 @@
         }
     </script>
 @endsection
-

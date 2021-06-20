@@ -10,24 +10,21 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Home</a>
+                <a href="{{route('dashboard')}}" class="nav-link">Home</a>
             </li>
         </ul>
     </nav>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="#" class="brand-link" style="margin-left: 10px">
+        <a href="{{route('dashboard')}}" class="brand-link" style="margin-left: 10px">
             <i class="fas fa-place-of-worship img-circle"></i>
             <span class="brand-text font-weight-light">SIB Barcelona</span>
         </a>
 
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="https://scontent.fvix3-1.fna.fbcdn.net/v/t1.6435-1/cp0/p40x40/120948122_3434979316578462_5650602700484922946_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=dbb9e7&_nc_eui2=AeGTANYyIumOzl61Dg9BpmerFloUmrdJLycWWhSat0kvJ0xMqXYFldbm1NfexTKEXbQQKpLfKMGBUtgHCyNB0QK2&_nc_ohc=rcvrpCyD6VsAX94a0om&_nc_ht=scontent.fvix3-1.fna&tp=27&oh=31acd5dbe76daaca522f8f6cc4e0efac&oe=60D1BFAB" class="img-circle elevation-2" alt="User Image">
-                </div>
                 <div class="info">
-                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="d-block">{{auth()->user()->name ?? '-'}}</a>
+                    <a href="" class="d-block">Usuário: {{auth()->user()->name}}</a>
                 </div>
             </div>
 
@@ -37,6 +34,14 @@
 
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                        <a href="{{route('dashboard')}}" class="nav-link {{Route::is('dashboard') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{route('churches.index')}}" class="nav-link {{Route::is('churches.*') ? 'active' : ''}}">
                             <i class="nav-icon fa fa-cross"></i>
@@ -98,6 +103,22 @@
                             <i class="nav-icon fas fa-chalkboard-teacher"></i>
                             <p>
                                 Cargos e Departamentos
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('records.index')}}" class="nav-link {{Route::is('records.*') ? 'active' : ''}}">
+                            <i class="nav-icon far fa-clipboard"></i>
+                            <p>
+                                Atas
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('reports.index')}}" class="nav-link {{Route::is('reports.*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                            <p>
+                                Relatórios financeiros
                             </p>
                         </a>
                     </li>

@@ -13,7 +13,7 @@
         "axios": "^0.21.1",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
-        "jquery": "^3.2",
+        "jquery": "^3.6.0",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
@@ -26,6 +26,8 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
-        "admin-lte": "^3.0.5"
+        "admin-lte": "^3.0.5",
+        "datatables.net": "^1.10.25",
+        "datatables.net-dt": "^1.1.0"
     }
 }
