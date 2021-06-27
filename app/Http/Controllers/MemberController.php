@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Gender;
 use App\Http\Requests\MemberRequest;
 use App\Member;
 
+use App\RelationshipStatus;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -21,7 +23,7 @@ class MemberController extends Controller
     {
         $members = Member::all()->sortBy('name');
 
-        return view('members/index', ['members' => $members]);
+        return view('members.index', ['members' => $members]);
     }
 
     /**
@@ -31,7 +33,10 @@ class MemberController extends Controller
      */
     public function create(): View
     {
-        return view('members/create');
+        $relationshipStatuses = RelationshipStatus::all();
+        $genders = Gender::all();
+
+        return view('members.create', ['relationshipStatuses' => $relationshipStatuses, 'genders' => $genders]);
     }
 
     /**
@@ -57,7 +62,9 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        $member = Member::find($id);
+
+        return view('members.show', ['member' => $member]);
     }
 
     /**
@@ -68,7 +75,10 @@ class MemberController extends Controller
      */
     public function edit(Member $member): View
     {
-        return view('members/edit', ['member' => $member]);
+        $relationshipStatuses = RelationshipStatus::all();
+        $genders = Gender::all();
+
+        return view('members.edit', ['member' => $member, 'relationshipStatuses' => $relationshipStatuses, 'genders' => $genders]);
     }
 
     /**

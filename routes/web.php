@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('members', MemberController::class);
     Route::resource('events', EventController::class);

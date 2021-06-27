@@ -20,8 +20,8 @@ class DashboardController extends Controller
     public function index()
     {
         $members = Member::all();
-        $men = $members->where('gender', '=', 'Masculino')->count();
-        $woman = $members->where('gender', '=', 'Feminino')->count();
+        $men = $members->where('gender_id', '=', '1')->count();
+        $woman = $members->where('gender_id', '=', '2')->count();
         $visitors = Visitor::all();
         $random_verse = $this->bibleService->getRandomVerse();
         $reports = Report::all();

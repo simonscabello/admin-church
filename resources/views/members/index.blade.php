@@ -16,9 +16,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Sexo</th>
-                    <th>CPF</th>
-                    <th>E-mail</th>
                     <th>Data de nascimento</th>
                     <th>Telefone</th>
                     <th>Endereço</th>
@@ -30,10 +27,7 @@
                 <tr>
                     <td>{{$member->id}}</td>
                     <td>{{$member->name}}</td>
-                    <td>{{$member->gender}}</td>
-                    <td>{{$member->cpf}}</td>
-                    <td>{{$member->email}}</td>
-                    <td>{{date('d/m/Y', strtotime($member->age))}}</td>
+                    <td>{{date('d/m/Y', strtotime($member->birth_day))}}</td>
                     <td>{{$member->phone}}</td>
                     <td>{{$member->address}}</td>
                     <td>

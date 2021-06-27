@@ -3,7 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -19,10 +22,17 @@ class Member extends Model
 
     protected $fillable = [
         'name',
-        'gender',
+        'gender_id',
         'cpf',
+        'relationship_status_id',
+        'rg',
         'email',
-        'age',
+        'birth_day',
+        'birth_place',
+        'conversion_date',
+        'baptism_day',
+        'father_name',
+        'mother_name',
         'phone',
         'address',
     ];
@@ -44,8 +54,18 @@ class Member extends Model
         return $this->hasMany(Department::class);
     }
 
-    public function events()
+    public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);
+    }
+
+    public function relationshipStatus(): BelongsTo
+    {
+        return $this->belongsTo(RelationshipStatus::class);
+    }
+
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class);
     }
 }

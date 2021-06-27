@@ -25,10 +25,10 @@ class MemberRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:3', 'max:255'],
-            'gender' => ['required'],
+            'gender_id' => ['required'],
             'cpf' => ['required'],
             'email' => ['email'],
-            'age' => ['required'],
+            'birth_day' => ['required'],
             'address' => ['required', 'min:3'],
         ];
     }
@@ -42,7 +42,7 @@ class MemberRequest extends FormRequest
             'gender.required' => 'Por favor, insira o sexo',
             'cpf.required' => 'Por favor, insire o CPF',
             'email.email' => 'Por favor, insira um e-mail válido',
-            'age.required' => 'Por favor, insira a data de nascimento',
+            'birth_day.required' => 'Por favor, insira a data de nascimento',
             'address.required' => 'Por favor, insira o endereço',
             'address.min' => 'Por favor, insira o endereço completo',
         ];

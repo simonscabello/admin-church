@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-</head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -11,6 +10,20 @@
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{route('dashboard')}}" class="nav-link">Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-user"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <button form="logout" type="submit" class="dropdown-item"><i class="fas fa-user mr-2"></i> Sair</button>
+                    <form id="logout" action="{{route('logout')}}" method="post">
+                        @csrf
+                    </form>
+                    <a class="dropdown-item" href="{{route('register')}}"><i class="fas fa-plus"></i>   Novo usuário</a>
+                </div>
             </li>
         </ul>
     </nav>
@@ -133,7 +146,7 @@
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+            Feito com amor :)
         </div>
         <strong>Copyright &copy; {{date('Y')}} <a href="https://github.com/simonscabello">Simon Scabello</a>.</strong> All rights reserved.
     </footer>
