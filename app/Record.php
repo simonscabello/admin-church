@@ -18,7 +18,7 @@ class Record extends Model
 
     protected $table = 'records';
 
-    protected $fillable = ['name', 'date', 'file_id'];
+    protected $fillable = ['name', 'date', 'number', 'file_id'];
 
     public function file(): BelongsTo
     {

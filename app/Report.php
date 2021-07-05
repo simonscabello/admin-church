@@ -12,7 +12,7 @@ class Report extends Model
 
     protected $table = 'reports';
 
-    protected $fillable = ['name', 'month', 'entries', 'exits', 'balance', 'previus_balance', 'next_balance', 'file_id'];
+    protected $fillable = ['name', 'month', 'entries', 'exits', 'balance', 'file_id'];
 
     public function file(): BelongsTo
     {

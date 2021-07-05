@@ -15,7 +15,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nome</th>
+                    <th>Número</th>
                     <th>Data da assembléia</th>
                     <th>Arquivo</th>
                     <th>Ações</th>
@@ -25,7 +25,7 @@
                 @foreach($records as $record)
                 <tr>
                     <td>{{$record->id}}</td>
-                    <td>{{$record->name}}</td>
+                    <td>{{$record->number}}</td>
                     <td>{{date('d/m/Y', strtotime($record->date))}}</td>
                     <td><a target="_blank" href="{{$record->file->url}}"><i class="fas fa-file-pdf"></i> {{$record->file->original_name}}</a></td>
                     <td>

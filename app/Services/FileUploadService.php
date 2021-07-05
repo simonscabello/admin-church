@@ -15,11 +15,18 @@ class FileUploadService
 
         $file = new File();
 
-        $file->name = $data->name;
+        $file->name = $data->name ?? $data->number;
         $file->original_name = $uploaded_file->getClientOriginalName();
         $file->mime_type = $uploaded_file->getMimeType();
 
-        $file->url = config('filesystems.disks.public.url')
+        $url = '';
+        if (env('filesystem_driver') == 'public') {
+            $url = config('filesystems.disks.public.url');
+        } else {
+            $url = config('filesystems.disks.s3.url');
+        }
+
+        $file->url = $url
             . $path . '/'
             . $str_random  . '_'
             . $uploaded_file->getClientOriginalName();

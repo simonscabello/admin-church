@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReportRequest;
 use App\Report;
 use App\Services\FileUploadService;
 use Illuminate\Http\RedirectResponse;
@@ -44,7 +45,7 @@ class ReportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ReportRequest $request): RedirectResponse
     {
         $file = $this->fileUploadService->uploadFile($request, Report::path());
 
@@ -93,7 +94,7 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReportRequest $request, $id)
     {
         //
     }

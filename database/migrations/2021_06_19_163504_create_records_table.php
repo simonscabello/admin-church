@@ -15,12 +15,12 @@ class CreateRecordsTable extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('date');
 
             $table->unsignedBigInteger('file_id');
             $table->foreign('file_id')->references('id')->on('files');
 
+            $table->integer('number');
+            $table->date('date');
             $table->timestamps();
             $table->softDeletes();
         });

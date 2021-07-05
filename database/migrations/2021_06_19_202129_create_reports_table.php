@@ -15,15 +15,15 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('file_id');
+            $table->foreign('file_id')->references('id')->on('files');
+
             $table->string('name');
             $table->string('month');
             $table->float('entries');
             $table->float('exits');
             $table->float('balance');
-
-            $table->unsignedBigInteger('file_id');
-            $table->foreign('file_id')->references('id')->on('files');
-
             $table->timestamps();
             $table->softDeletes();
         });

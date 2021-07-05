@@ -119,6 +119,19 @@
                         <a href="{{route('reports.index')}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-gradient-indigo">
+                        <div class="inner">
+                            <h3>{{$data['member_tithe']}}</h3>
+
+                            <p>Membros dizimístas</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-comments-dollar"></i>
+                        </div>
+                        <a href="{{route('tithes.index')}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

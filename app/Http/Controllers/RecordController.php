@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\Http\Requests\RecordRequest;
 use App\Record;
 use App\Services\FileUploadService;
 use Illuminate\Http\RedirectResponse;
@@ -47,13 +48,13 @@ class RecordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RecordRequest $request): RedirectResponse
     {
         $file = $this->fileUploadService->uploadFile($request, Record::path());
 
         $record = new Record();
 
-        $record->name = $request->name;
+        $record->number = $request->number;
         $record->date = $request->date;
         $record->file_id = $file->id;
 
