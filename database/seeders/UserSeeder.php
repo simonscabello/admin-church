@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'id' => '1',
             'name' => 'Administrador',
-            'email' => 'admin@church.com.br',
+            'email' => 'admin@sibbarcelona.com.br',
             'password' => Hash::make('admin'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
