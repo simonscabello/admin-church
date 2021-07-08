@@ -20,7 +20,7 @@ class FileUploadService
         $file->mime_type = $uploaded_file->getMimeType();
 
         $url = '';
-        if (env('filesystem_driver') == 'public') {
+        if (env('FILESYSTEM_DRIVER') == 'public') {
             $url = config('filesystems.disks.public.url');
         } else {
             $url = config('filesystems.disks.s3.url');

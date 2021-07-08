@@ -26,8 +26,8 @@ class ReportRequest extends FormRequest
         return [
             'name' => ['required'],
             'month' => ['required'],
-            'entries' => ['required', 'float'],
-            'exits' => ['required', 'float'],
+            'entries' => ['required'],
+            'exits' => ['required'],
             'file' => ['required']
         ];
     }
