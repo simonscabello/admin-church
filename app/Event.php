@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @method static create(array $all)
  * @method static find(int $id)
+ * @method static orderBy(string $string)
  */
 class Event extends Model
 {

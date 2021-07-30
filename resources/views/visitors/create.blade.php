@@ -10,45 +10,46 @@
             <form method="POST" action="{{route('visitors.store')}}">
                 @csrf
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{old('name')}}">
-                        @error('name')
-                        <div class="invalid-feedback">
-                            {{$message}}
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label for="name">Nome *</label>
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{old('name')}}">
+                            @error('name')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
+                        <div class="col-lg-4">
+                            <label for="address">Endereço *</label>
+                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" required value="{{old('address')}}">
+                            @error('address')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="phone">Telefone *</label>
+                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone')}}">
+                            @error('phone')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
                     </div>
 
-
-                    <div class="form-group">
-                        <label for="address">Endereço</label>
-                        <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" required value="{{old('address')}}">
-                        @error('address')
-                        <div class="invalid-feedback">
-                            {{$message}}
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label for="visit_day">Dia da visita *</label>
+                            <input type="date" class="form-control @error('visit_day') is-invalid @enderror" name="visit_day" value="{{old('visit_day')}}">
+                            @error('visit_day')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Telefone</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone')}}">
-                        @error('phone')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="visit_day">Dia da visita</label>
-                        <input type="date" class="form-control @error('visit_day') is-invalid @enderror" name="visit_day" value="{{old('visit_day')}}">
-                        @error('visit_day')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
                     </div>
                 </div>
 

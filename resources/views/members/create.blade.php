@@ -20,7 +20,7 @@
                         @enderror
                     </div>
                     <div class="col-lg-4">
-                        <label for="gender_id">Sexo*</label>
+                        <label for="gender_id">Sexo *</label>
                         <select name="gender_id" class="form-control @error('gender_id') is-invalid @enderror">
                             <option disabled selected value> -- Selecione um sexo -- </option>
                             @foreach($genders as $gender)
@@ -38,7 +38,7 @@
                         @enderror
                     </div>
                     <div class="col-lg-4">
-                        <label for="relationship_status_id">Estado civil*</label>
+                        <label for="relationship_status_id">Estado civil *</label>
                         <select name="relationship_status_id" class="form-control @error('relationship_status_id') is-invalid @enderror">
                             <option disabled selected value> -- Selecione um estado civil -- </option>
                             @foreach($relationshipStatuses as $status)
@@ -119,7 +119,7 @@
 
                 <div class="form-group row">
                     <div class="col-lg-4">
-                        <label for="cpf">Natural de *</label>
+                        <label for="cpf">Naturalidade *</label>
                         <input type="text" name="birth_place" class="form-control @error('birth_place') is-invalid @enderror" value="{{old('birth_place')}}">
                         @error('birth_place')
                         <div class="invalid-feedback">

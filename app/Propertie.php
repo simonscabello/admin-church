@@ -17,6 +17,7 @@ class Propertie extends Model
 
     protected $fillable = [
         'name',
+        'serial_number',
         'description',
         'amount',
         'value',

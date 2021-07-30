@@ -11,38 +11,38 @@
                 @csrf
                 @method('put')
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="member_id">Membro</label>
-                        <select name="member_id" class="form-control" required>
-                            @if(!is_null($department->member))
-                                <option selected value="{{$department->member->id}}"> {{$department->member->name}} </option>
-                            @endif
-                            <option value="">Líder não definido</option>
-                            <option disabled value=""> --- </option>
-                            @foreach($members as $member)
-                                <option value="{{$member->id}}">{{$member->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{$department->name}}">
-                        @error('name')
-                        <div class="invalid-feedback">
-                            {{$message}}
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label for="member_id">Membro *</label>
+                            <select name="member_id" class="form-control" required>
+                                @if(!is_null($department->member))
+                                    <option selected value="{{$department->member->id}}"> {{$department->member->name}} </option>
+                                @endif
+                                <option value="">Líder não definido</option>
+                                <option disabled value=""> --- </option>
+                                @foreach($members as $member)
+                                    <option value="{{$member->id}}">{{$member->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" required value="{{$department->description}}">
-                        @error('description')
-                        <div class="invalid-feedback">
-                            {{$message}}
+                        <div class="col-lg-4">
+                            <label for="name">Nome *</label>
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{$department->name}}">
+                            @error('name')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
+                        <div class="col-lg-4">
+                            <label for="description">Descrição *</label>
+                            <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" required value="{{$department->description}}">
+                            @error('description')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
                     </div>
 
                 </div>

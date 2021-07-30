@@ -16,14 +16,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>CPF</th>
                         <th>Cargo</th>
-                        <th>Descrição</th>
                         <th>Telephone</th>
-                        <th>E-mail</th>
-                        <th>Começou em</th>
-                        <th>Salário</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
@@ -32,14 +26,8 @@
                         <tr>
                             <td>{{$employee->id}}</td>
                             <td>{{$employee->name}}</td>
-                            <td>{{$employee->address}}</td>
-                            <td>{{$employee->cpf}}</td>
                             <td>{{$employee->occupation}}</td>
-                            <td>{{$employee->description}}</td>
                             <td>{{$employee->phone}}</td>
-                            <td>{{$employee->email}}</td>
-                            <td>{{date('d/m/Y', strtotime($employee->started_in))}}</td>
-                            <td>R$ {{$employee->salary}}</td>
 
                             <td>
                                 <a href="{{route('employees.show', $employee->id)}}" class="btn btn-primary"><i class="nav-icon fa fa-eye"></i></a>

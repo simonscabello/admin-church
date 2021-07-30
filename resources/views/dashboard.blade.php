@@ -83,40 +83,14 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>R$ {{$data['entries']}}</h3>
+                            <h3>{{$data['events']}}</h3>
 
-                            <p>Entradas</p>
+                            <p>Eventos</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-comments-dollar"></i>
+                            <i class="fas fa-calendar-week"></i>
                         </div>
-                        <a href="{{route('reports.index')}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>R$ {{$data['exits']}}</h3>
-
-                            <p>Saídas</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-comments-dollar"></i>
-                        </div>
-                        <a href="{{route('reports.index')}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="small-box bg-navy">
-                        <div class="inner">
-                            <h3>R$ {{$data['entries'] - $data['exits']}}</h3>
-
-                            <p>Saldo em caixa</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-comments-dollar"></i>
-                        </div>
-                        <a href="{{route('reports.index')}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('events.index')}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">

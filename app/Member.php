@@ -17,6 +17,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static create(array $all)
  * @method static whereHas(string $string, \Closure $param)
  * @method static where(string $string, mixed $birth_day)
+ * @method static orderBy(string $string)
  */
 class Member extends Authenticatable
 {

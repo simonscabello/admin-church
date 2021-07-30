@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Member;
 use App\Report;
 use App\Services\BibleApiService;
@@ -20,19 +21,16 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $random_verse = $this->bibleService->getRandomVerse();
+
         $members = Member::all();
         $men = $members->where('gender_id', '=', '1')->count();
         $woman = $members->where('gender_id', '=', '2')->count();
         $total_members = $members->count();
 
         $visitors = Visitor::all();
-
-        $random_verse = $this->bibleService->getRandomVerse();
-
-        $reports = Report::all();
-        $entries = $reports->sum('entries');
-        $exits = $reports->sum('exits');
         $tithes = Tithe::all();
+        $events = Event::all()->count();
 
         $member_tithe = 0;
         foreach ($tithes as $key => $tithe) {
@@ -47,9 +45,8 @@ class DashboardController extends Controller
         $data['woman'] = $woman;
         $data['visitors'] = $visitors;
         $data['random_verse'] = $random_verse;
-        $data['entries'] = $entries;
-        $data['exits'] = $exits;
         $data['member_tithe'] = $member_tithe;
+        $data['events'] = $events;
 
         return view('dashboard', compact('data'));
     }

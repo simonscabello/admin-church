@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,15 +21,16 @@ class EventController extends Controller
      */
     public function index(): JsonResponse
     {
-        $events = Event::all();
+        $events = Event::orderBy('created_at')->get();
 
+        // TODO: Resource
         return response()->json($events);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -36,18 +41,18 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Event  $event
+     * @return JsonResponse
      */
-    public function show($id)
+    public function show(Event $event): JsonResponse
     {
-        //
+        return response()->json($event);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return JsonResponse
      */

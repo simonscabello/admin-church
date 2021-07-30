@@ -25,6 +25,7 @@ class PropertieRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:3'],
+            'serial_number' => ['required'],
             'description' => ['required', 'min:3'],
             'amount' => ['required'],
             'donated' => ['required']
@@ -36,6 +37,7 @@ class PropertieRequest extends FormRequest
         return [
             'name.required' => 'Por favor, insira o nome do patrimônio',
             'name.min' => 'Por favor, insira o nome completo',
+            'serial_number.required' => 'Por favor, insira o número de serial do patrimônio',
             'description.required' => 'Por favor, insira a descrição',
             'description.min' => 'Por favor, insira a descrição completa',
             'amount.required' => 'Por favor, insira a quantidade',

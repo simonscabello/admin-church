@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::apiResource('events', Api\EventController::class)->middleware('auth:sanctum');
+Route::apiResource('events', Api\EventController::class);
+Route::apiResource('members', Api\MemberController::class);

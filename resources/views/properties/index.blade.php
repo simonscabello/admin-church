@@ -16,9 +16,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Descrição</th>
                     <th>Quantidade</th>
-                    <th>Valor</th>
                     <th>Data de aquisição</th>
                     <th>Doado</th>
                     <th>Ações</th>
@@ -29,9 +27,7 @@
                 <tr>
                     <td>{{$propertie->id}}</td>
                     <td>{{$propertie->name}}</td>
-                    <td>{{$propertie->description}}</td>
                     <td>{{$propertie->amount}}</td>
-                    <td>{{$propertie->value}}</td>
                     <td>{{date('d/m/Y', strtotime($propertie->buy_date))}}</td>
                     <td>{{$propertie->donated}}</td>
                     <td>
