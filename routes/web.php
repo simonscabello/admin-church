@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/prayer-requests', 'PrayerRequestController@index')->name('prayer.requests');
+    Route::put('/prayer-requests/{id}', 'PrayerRequestController@update');
     Route::resource('members', MemberController::class);
     Route::resource('events', EventController::class);
     Route::resource('employees', EmployeeController::class);

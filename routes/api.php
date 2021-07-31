@@ -18,3 +18,4 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::apiResource('events', Api\EventController::class);
 Route::apiResource('members', Api\MemberController::class);
+Route::apiResource('prayer-requests', Api\PrayerRequestController::class);

@@ -135,6 +135,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('prayer.requests')}}" class="nav-link {{Route::is('prayer.requests') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-praying-hands"></i>
+                            <p>
+                                Pedidos de oração
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
