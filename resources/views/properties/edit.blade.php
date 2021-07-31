@@ -61,7 +61,7 @@
                             @enderror
                         </div>
                         <div class="col-lg-4">
-                            <label for="serial_number">Data de aquisição *</label>
+                            <label for="serial_number">Número de série  *</label>
                             <input type="text" name="serial_number" class="form-control @error('serial_number') is-invalid @enderror" value="{{$propertie->serial_number}}">
                             @error('serial_number')
                             <div class="invalid-feedback">

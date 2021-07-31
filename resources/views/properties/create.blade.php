@@ -60,7 +60,7 @@
                             @enderror
                         </div>
                         <div class="col-lg-4">
-                            <label for="serial_number">Número de serial *</label>
+                            <label for="serial_number">Número de série *</label>
                             <input type="text" name="serial_number" class="form-control @error('serial_number') is-invalid @enderror" value="{{old('serial_number')}}">
                             @error('buy_date')
                             <div class="invalid-feedback">

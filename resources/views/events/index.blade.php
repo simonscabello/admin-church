@@ -30,8 +30,8 @@
                             <td>{{$event->id}}</td>
                             <td>{{$event->name}}</td>
                             <td>{{$event->description}}</td>
-                            <td>{{$event->start_date}}</td>
-                            <td>{{$event->end_date}}</td>
+                            <td>{{date('d/m/Y', strtotime($event->start_date))}}</td>
+                            <td>{{date('d/m/Y', strtotime($event->end_date))}}</td>
                             <td>{{$event->max_participants}}</td>
                             <td>{{$event->registered_participants ?? '0'}}</td>
                             <td>

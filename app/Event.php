@@ -34,16 +34,6 @@ class Event extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function getStartDateAttribute($value)
-    {
-        return date('d/m/Y', strtotime($value));
-    }
-
-    public function getEndDateAttribute($value)
-    {
-        return date('d/m/Y', strtotime($value));
-    }
-
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(Member::class);

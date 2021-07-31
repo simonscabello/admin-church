@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="form-group row">
                         <div class="col-lg-4">
-                            <label for="number">Número</label>
+                            <label for="number">Número *</label>
                             <input type="number" name="number" class="form-control @error('number') is-invalid @enderror"  value="{{old('number')}}">
                             @error('number')
                             <div class="invalid-feedback">
@@ -20,7 +20,7 @@
                             @enderror
                         </div>
                         <div class="col-lg-4">
-                            <label for="date">Data da assembléia</label>
+                            <label for="date">Data da assembléia *</label>
                             <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"  value="{{old('date')}}">
                             @error('date')
                             <div class="invalid-feedback">

@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MemberRequest;
 use App\Http\Resources\MemberResource;
 use App\Member;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\Cache;
 
 class MemberController extends Controller
 {
@@ -23,9 +24,16 @@ class MemberController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $members = Member::orderBy('name')->get();
+        $key = 'members_index';
 
         MemberResource::withoutWrapping();
+        if (Cache::has($key)) {
+            return MemberResource::collection(Cache::get($key));
+        }
+
+        $members = Member::orderBy('name')->get();
+        Cache::put($key, $members);
+
         return MemberResource::collection($members);
     }
 
@@ -39,6 +47,8 @@ class MemberController extends Controller
     {
         Member::create($request->all());
 
+        Cache::forget('members_index');
+
         return response()->json(['message' => 'Membro cadastrado com sucesso!']);
     }
 
@@ -51,7 +61,16 @@ class MemberController extends Controller
     public function show(Member $member): MemberResource
     {
         MemberResource::withoutWrapping();
-        return MemberResource::make($member);
+        $key = md5(serialize($member));
+        if (Cache::has($key)) {
+            return Cache::get($key);
+        }
+
+        $membro = MemberResource::make($member);
+
+        Cache::put($key, $membro, Carbon::now()->addDay());
+
+        return $membro;
     }
 
     /**
@@ -67,6 +86,8 @@ class MemberController extends Controller
             return response()->json(['message' => 'Não consegue né moisés'], 401);
         }
         $member->update($request->all());
+
+        Cache::forget('members_index');
 
         return response()->json(['message' => 'Dados atualizados com sucesso!']);
     }

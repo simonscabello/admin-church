@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Event;
-use App\EventMember;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EventResource;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class EventController extends Controller
 {
@@ -17,14 +20,21 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+     * @return AnonymousResourceCollection
      */
-    public function index(): JsonResponse
+    public function index(): AnonymousResourceCollection
     {
-        $events = Event::orderBy('created_at')->get();
+        $key = 'events_index';
 
-        // TODO: Resource
-        return response()->json($events);
+        EventResource::withoutWrapping();
+        if (Cache::has($key)) {
+            return EventResource::collection(Cache::get($key));
+        }
+
+        $events = Event::orderBy('created_at')->get();
+        Cache::put($key, $events);
+
+        return EventResource::collection($events);
     }
 
     /**
@@ -42,24 +52,32 @@ class EventController extends Controller
      * Display the specified resource.
      *
      * @param  Event  $event
-     * @return JsonResponse
+     * @return EventResource
      */
-    public function show(Event $event): JsonResponse
+    public function show(Event $event): EventResource
     {
-        return response()->json($event);
+        EventResource::withoutWrapping();
+        $key = md5(serialize($event));
+        if (Cache::has($key)) {
+            return Cache::get($key);
+        }
+
+        $evento = EventResource::make($event);
+
+        Cache::put($key, $evento, Carbon::now()->addDay());
+
+        return $evento;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param  Event  $event
      * @return JsonResponse
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, Event $event): JsonResponse
     {
-        $event = Event::find($id);
-
         if ($event->registered_participants >= $event->max_participants) {
             return response()->json(['message' => 'Não há mais vagas disponíveis para esse evento.']);
         }
@@ -68,6 +86,8 @@ class EventController extends Controller
         $event->save();
 
         $event->members()->attach($request->member_id);
+
+        Cache::forget('events_index');
 
         return response()->json(['message' => 'Membro cadastrado no evento com sucesso!']);
     }

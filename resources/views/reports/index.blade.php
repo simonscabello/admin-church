@@ -17,9 +17,6 @@
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Mês</th>
-                        <th>Entradas</th>
-                        <th>Saídas</th>
-                        <th>Balanço</th>
                         <th>Arquivo</th>
                         <th>Ações</th>
                     </tr>
@@ -30,9 +27,6 @@
                             <td>{{$report->id}}</td>
                             <td>{{$report->name}}</td>
                             <td>{{date('m/Y', strtotime($report->month))}}</td>
-                            <td>R$ {{$report->entries}}</td>
-                            <td>R$ {{$report->exits}}</td>
-                            <td>R$ {{$report->balance}}</td>
                             <td><a target="_blank" href="{{$report->file->url}}"><i class="fas fa-file-pdf"></i> {{$report->file->original_name}}</a></td>
 
                             <td>

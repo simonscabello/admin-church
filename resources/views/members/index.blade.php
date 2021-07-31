@@ -58,7 +58,7 @@
                 "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nenhum registro encontrado",
                 "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "No records available",
+                "infoEmpty": "Nenhum registro encontrado",
             }
         })
     });
