@@ -30,8 +30,8 @@
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{route('dashboard')}}" class="brand-link" style="margin-left: 10px">
-            <i class="fas fa-place-of-worship img-circle"></i>
-            <span class="brand-text font-weight-light">SIB Barcelona</span>
+            <i class="fas fa-church img-circle"></i>
+            <span class="brand-text font-weight-light">Igreja ON</span>
         </a>
 
         <div class="sidebar">

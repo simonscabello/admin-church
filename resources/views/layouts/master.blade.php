@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>SIB-Barcelona | Administrativo</title>
+    <title>Igreja ON | Administrativo</title>
+
+    <link rel="sortcut icon" href="https://img.icons8.com/plasticine/2x/church.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">

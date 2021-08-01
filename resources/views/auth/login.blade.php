@@ -3,17 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin - Church</title>
+    <title>Igreja ON | Login</title>
+    <link rel="sortcut icon" href="https://img.icons8.com/plasticine/2x/church.png" type="image/x-icon" />
+
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-    <div class="login-logo">
-        <i class="fas fa-place-of-worship img-circle" style="color: white;"></i>
-        <strong style="color: white;">SIB Barcelona</strong>
-    </div>
     <div class="card">
         <div class="card-body login-card-body">
+            <div class="login-logo">
+                <i style="color: #7d1038" class="fas fa-church"></i>
+                <p style="font-size: 2rem;">Igreja ON</p>
+            </div>
             <p class="login-box-msg">Faça login para iniciar sua sessão</p>
 
             <form action="{{ route('login') }}" method="post">

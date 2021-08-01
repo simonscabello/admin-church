@@ -52,7 +52,7 @@
                         </button>
                     </div>
                     <div class="modal-body" style="text-align: center">
-                        <textarea name="response" id="response" cols="50" rows="5"></textarea>
+                        <textarea name="response" id="response" cols="40" rows="5"></textarea>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

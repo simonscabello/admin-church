@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Novo usuário</title>
+    <title>Igreja ON | Novo usuário</title>
+    <link rel="sortcut icon" href="https://img.icons8.com/plasticine/2x/church.png" type="image/x-icon" />
+
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
