@@ -55,7 +55,7 @@
                 "language": {
                     "lengthMenu": "Mostrando _MENU_ registros por página",
                     "zeroRecords": "Nenhum registro encontrado",
-                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
                     "infoEmpty": "No records available",
                 }
             })
